@@ -9,7 +9,14 @@ from pyparsing import (
     Combine, Group, Optional,
     nums, alphanums, alphas, sglQuotedString,
     delimitedList,
-    opAssoc, infixNotation, oneOf)
+    opAssoc, oneOf)
+
+try:
+    from pyparsing import infixNotation
+except ImportError:
+    # For old versions of PyParsing
+    from pyparsing import operatorPrecedence as infixNotation
+
 
 from brabbel.functions import functions
 from brabbel.nodes import (
